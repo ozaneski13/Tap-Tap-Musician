@@ -12,6 +12,7 @@ public class AudioSourceHolder : MonoBehaviour
     {
         if (_index == _audioClips.Count - 1)
             _index = 0;
+
         else
             _index++;
 

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TapManager : MonoBehaviour
 {
+    [Header("Controllers")]
+    [SerializeField] private MusicalPointController _musicalPointController = null;
+
     private List<float> _taps = null;
 
     private int _tapsPerSecond = 0;
@@ -26,7 +29,11 @@ public class TapManager : MonoBehaviour
         foreach (Touch touch in Input.touches)
         {
             if (touch.phase == TouchPhase.Ended)
+            {
                 _taps.Add(Time.timeSinceLevelLoad);
+
+                _musicalPointController.ActiveGainsFromTap();
+            }
         }
 
         for (int i = 0; i < _taps.Count; i++)

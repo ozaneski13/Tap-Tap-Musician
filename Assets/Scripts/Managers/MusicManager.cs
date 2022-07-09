@@ -31,6 +31,7 @@ public class MusicManager : MonoBehaviour
     {
         if (_tapManager.TapsPerSecond >= _tapThresholdToPlay)
             PlayMusic();
+
         else
             StopMusic();
 
@@ -73,6 +74,11 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    public void Load()
+    {
+        LoadNewSong();
+    }
+
     private void LoadNewSong()
     {
         Debug.Log("Load pressed");
@@ -84,10 +90,5 @@ public class MusicManager : MonoBehaviour
         _passedTime = 0f;
 
         PlayMusic();
-    }
-
-    public void Load()
-    {
-        LoadNewSong();
     }
 }
