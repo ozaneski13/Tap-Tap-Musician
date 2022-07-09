@@ -3,6 +3,9 @@ using System;
 
 public class BackgroundWorkController : MonoBehaviour
 {
+    [Header("Managers")]
+    [SerializeField] private NotificationManager _notificationManager = null;
+
     [Header("Controllers")]
     [SerializeField] private MusicalPointController _musicPointController = null;
 
@@ -26,11 +29,17 @@ public class BackgroundWorkController : MonoBehaviour
 
     private void OnApplicationPause(bool pause)
     {
-        if(pause)
+        if (pause)
+        {
             Save();
+
+            _notificationManager.ScheduleNotificationBeforeExit();
+        }
 
         else
         {
+            _notificationManager.CancelNotifications();
+
             Player.Instance.LoadPlayer();
 
             CheckDifference();
@@ -40,6 +49,8 @@ public class BackgroundWorkController : MonoBehaviour
     public void Quit()
     {
         Save();
+
+        _notificationManager.ScheduleNotificationBeforeExit();
 
         Application.Quit();
     }
