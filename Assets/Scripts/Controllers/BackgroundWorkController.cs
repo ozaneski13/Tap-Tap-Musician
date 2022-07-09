@@ -27,10 +27,7 @@ public class BackgroundWorkController : MonoBehaviour
     private void OnApplicationPause(bool pause)
     {
         if(pause)
-        {
-            Player.Instance.musicalPoint = _musicPointController.CurrentMusicalPointCount;
-            Player.Instance.SavePlayer();
-        }
+            Save();
 
         else
         {
@@ -42,8 +39,15 @@ public class BackgroundWorkController : MonoBehaviour
 
     public void Quit()
     {
-        Player.Instance.SavePlayer();
+        Save();
 
         Application.Quit();
+    }
+
+    private void Save()
+    {
+        Player.Instance.musicalPoint = _musicPointController.CurrentMusicalPointCount;
+        Player.Instance.lastSavedTime = DateTime.Now.ToBinary();
+        Player.Instance.SavePlayer();
     }
 }

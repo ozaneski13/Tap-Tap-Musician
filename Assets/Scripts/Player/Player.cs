@@ -13,11 +13,14 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    [HideInInspector]
     public long lastSavedTime;
+
+    [HideInInspector]
     public double musicalPoint;
-    public float afkGainPerSecond;
-    public float activeGainPerTap;
-    public float passiveGainPerSecond;
+
+    [HideInInspector]
+    public float afkGainPerSecond, activeGainPerTap, passiveGainPerSecond;
 
     public void SavePlayer()
     {
@@ -32,6 +35,10 @@ public class Player : MonoBehaviour
         {
             musicalPoint = 0;
             lastSavedTime = System.DateTime.Now.ToBinary();
+            musicalPoint = 0;
+            afkGainPerSecond = 1;
+            activeGainPerTap = 5;
+            passiveGainPerSecond = 0;
 
             return;
         }

@@ -33,13 +33,13 @@ public class MusicalPointController : MonoBehaviour
 
     public void BackgroundGains(double totalSeconds)
     {
+        debugtext.text = totalSeconds.ToString();
         _currentMusicalPointCount += totalSeconds * _afkGainPerSecond;
         _currentPointText.text = _currentMusicalPointCount.ToString("F2") + "m";
     }
 
     public void ActiveGainsFromTap()
     {
-        debugtext.text = _activeGainPerTap.ToString();
         _currentMusicalPointCount += _activeGainPerTap;
         _currentPointText.text = _currentMusicalPointCount.ToString("F2") + "m";
     }

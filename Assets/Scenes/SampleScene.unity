@@ -725,7 +725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _musicalPoint: 0
-  _afkGainPerSecond: 0
+  _afkGainPerSecond: 1
   _activeGainPerTap: 5
   _passiveGainPerSecond: 0
 --- !u!4 &1721191205
@@ -932,7 +932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastSavedTime: 0
   musicalPoint: 0
-  afkGainPerSecond: 0
+  afkGainPerSecond: 1
   activeGainPerTap: 5
   passiveGainPerSecond: 0
 --- !u!1 &2144777115
