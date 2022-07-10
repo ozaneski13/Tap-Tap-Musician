@@ -20,6 +20,7 @@ public class NotificationManager : MonoBehaviour
         notification.Title = "Hey! Come back!";
         notification.Text = "You should practice more on your instrument!";
         notification.FireTime = System.DateTime.Now.AddHours(6);
+        notification.ShowTimestamp = true;
 
         var id = AndroidNotificationCenter.SendNotification(notification, "channel_id");
 

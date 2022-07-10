@@ -32,8 +32,6 @@ public class BackgroundWorkController : MonoBehaviour
         if (pause)
         {
             Save();
-
-            _notificationManager.ScheduleNotificationBeforeExit();
         }
 
         else
@@ -50,8 +48,6 @@ public class BackgroundWorkController : MonoBehaviour
     {
         Save();
 
-        _notificationManager.ScheduleNotificationBeforeExit();
-
         Application.Quit();
     }
 
@@ -60,5 +56,7 @@ public class BackgroundWorkController : MonoBehaviour
         Player.Instance.musicalPoint = _musicPointController.CurrentMusicalPointCount;
         Player.Instance.lastSavedTime = DateTime.Now.ToBinary();
         Player.Instance.SavePlayer();
+
+        _notificationManager.ScheduleNotificationBeforeExit();
     }
 }
