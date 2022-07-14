@@ -20,7 +20,10 @@ public class Player : MonoBehaviour
     public double musicalPoint;
 
     [HideInInspector]
-    public float afkGainPerSecond, activeGainPerTap, passiveGainPerSecond;
+    public float afkGainPerSecond, activeGainPerTap, passiveGainPerSecond, instrumentExp, currentExpGain;
+
+    [HideInInspector]
+    public EInstruments currentInstrument;
 
     public void SavePlayer()
     {
@@ -39,6 +42,8 @@ public class Player : MonoBehaviour
             afkGainPerSecond = 1;
             activeGainPerTap = 5;
             passiveGainPerSecond = 0;
+            currentInstrument = EInstruments.None;
+            instrumentExp = 0;
 
             return;
         }
@@ -48,5 +53,8 @@ public class Player : MonoBehaviour
         afkGainPerSecond = data.afkGainPerSecond;
         activeGainPerTap = data.activeGainPerTap;
         passiveGainPerSecond = data.passiveGainPerSecond;
+        currentInstrument = data.currentInstrument;
+        instrumentExp = data.instrumentExp;
+        currentExpGain = data.currentExpGain;
     }
 }

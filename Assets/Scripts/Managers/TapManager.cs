@@ -6,6 +6,7 @@ public class TapManager : MonoBehaviour
 {
     [Header("Controllers")]
     [SerializeField] private MusicalPointController _musicalPointController = null;
+    [SerializeField] private InstrumentController _instrumentController = null;
 
     private List<float> _taps = null;
 
@@ -33,6 +34,7 @@ public class TapManager : MonoBehaviour
                 _taps.Add(Time.timeSinceLevelLoad);
 
                 _musicalPointController.ActiveGainsFromTap();
+                _instrumentController.IncreaseExp();
             }
         }
 
