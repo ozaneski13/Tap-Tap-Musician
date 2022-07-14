@@ -6,6 +6,8 @@ public class PlayerData
 
     public float afkGainPerSecond;
     public float activeGainPerTap;
+
+    public float currentPassiveGainPerSecond;
     public float passiveGainPerSecond;
 
     public EInstruments currentInstrument;
@@ -18,6 +20,7 @@ public class PlayerData
         lastSavedTime = player.lastSavedTime;
         afkGainPerSecond = player.afkGainPerSecond;
         activeGainPerTap = player.activeGainPerTap;
+        currentPassiveGainPerSecond = player.currentPassiveGainPerSecond;
         passiveGainPerSecond = player.passiveGainPerSecond;
         currentInstrument = player.currentInstrument;
         instrumentExp = player.instrumentExp;

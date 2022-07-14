@@ -15,7 +15,6 @@ public class MusicalPointController : MonoBehaviour
 
     private float _afkGainPerSecond;
     private float _activeGainPerTap;
-    private float _passiveGainPerSecond;
 
     public Action PowerUpStarted;
 
@@ -32,7 +31,6 @@ public class MusicalPointController : MonoBehaviour
 
         _afkGainPerSecond = _player.afkGainPerSecond;
         _activeGainPerTap = _player.activeGainPerTap;
-        _passiveGainPerSecond = _player.passiveGainPerSecond;
     }
 
     public void BackgroundGains(double totalSeconds)
@@ -48,9 +46,9 @@ public class MusicalPointController : MonoBehaviour
         _currentPointText.text = _currentMusicalPointCount.ToString("F2") + "m";
     }
 
-    public void PassiveGains()
+    public void PassiveGains(float gain)
     {
-        _currentMusicalPointCount += _passiveGainPerSecond;
+        _currentMusicalPointCount += gain;
         _currentPointText.text = _currentMusicalPointCount.ToString("F2") + "m";
     }
 
