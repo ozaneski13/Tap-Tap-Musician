@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     public float afkGainPerSecond, activeGainPerTap, passiveGainPerSecond, currentPassiveGainPerSecond,instrumentExp, currentExpGain;
 
     [HideInInspector]
-    public EInstruments currentInstrument;
+    public EInstrument currentInstrument;
 
     public void SavePlayer()
     {
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
             activeGainPerTap = 5;
             currentPassiveGainPerSecond = 0;
             passiveGainPerSecond = 0;
-            currentInstrument = EInstruments.None;
+            currentInstrument = EInstrument.None;
             instrumentExp = 0;
 
             return;

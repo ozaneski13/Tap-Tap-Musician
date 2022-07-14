@@ -4,7 +4,7 @@ public class InstrumentController : MonoBehaviour
 {
     private Player _player = null;
 
-    private EInstruments _currentInstrument;
+    private EInstrument _currentInstrument;
     private float _currentExp;
     private float _currentExpGain;
 

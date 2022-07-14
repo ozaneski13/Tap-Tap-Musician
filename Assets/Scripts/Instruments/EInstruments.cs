@@ -1,10 +1,11 @@
-public enum EInstruments
+public enum EInstrument
 {
-    None,
     Guitar,
     Drum,
     Violin,
     Saxophone,
     Piano,
     Harp,
+    DJ,
+    None,
 }

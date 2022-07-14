@@ -10,7 +10,7 @@ public class PlayerData
     public float currentPassiveGainPerSecond;
     public float passiveGainPerSecond;
 
-    public EInstruments currentInstrument;
+    public EInstrument currentInstrument;
     public float instrumentExp;
     public float currentExpGain;
 

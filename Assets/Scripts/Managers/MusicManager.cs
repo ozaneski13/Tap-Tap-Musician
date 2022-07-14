@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -9,7 +8,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private TapManager _tapManager = null;
 
     [Header("Audio Source Holder")]
-    [SerializeField] private AudioSourceHolder _audioSourceHolder = null;
+    [SerializeField] private MusicHolderController _audioSourceHolder = null;
 
     [Header("Options")]
     [SerializeField] private int _tapThresholdToPlay = 4;
@@ -22,9 +21,7 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
-        InitAudio();
-
-        StartCoroutine(CheckMusicStatus());
+        _audioSourceHolder.AudioHolderInitialized += InitAudio;
     }
 
     private void Update()
@@ -43,6 +40,8 @@ public class MusicManager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
 
         _audioSource.clip = _audioSourceHolder.GetAudioClip();
+
+        StartCoroutine(CheckMusicStatus());
     }
 
     private void PlayMusic()
