@@ -13,6 +13,12 @@ public abstract class PowerUp : MonoBehaviour, IPowerUp
     [SerializeField] private Sprite _powerUpSprite = null;
     private SpriteRenderer _spriteRenderer = null;
 
+    private Player _player = null;
+
+    private float _remainPowerUpTime;
+
+    private bool _powerUpRoutineRunning = false;
+
     public Action PowerUpSelected;
     public Action<EGain, float, float> PowerUpStarted;
     public Action PowerUpEnded;
@@ -24,7 +30,20 @@ public abstract class PowerUp : MonoBehaviour, IPowerUp
 
     private void Start()
     {
+        _player = Player.Instance;
+
         _spriteRenderer.sprite = _powerUpSprite;
+    }
+
+    private void Update()
+    {
+        if (_remainPowerUpTime > 0)
+            _remainPowerUpTime -= Time.deltaTime;
+        else
+            _remainPowerUpTime = 0;
+
+        if (_powerUpRoutineRunning)
+            _player.passivePowerUpRoutineRemainTime = _remainPowerUpTime;
     }
 
     public void PowerUpTapped()
@@ -34,15 +53,25 @@ public abstract class PowerUp : MonoBehaviour, IPowerUp
 
     public void StartPowerUp()
     {
-        PowerUpStarted?.Invoke(_gainType, _duration, _gainIncreaseMultiplier);
-
-        StartCoroutine(PowerUpRoutine());
+        StartCoroutine(PowerUpRoutine(_duration));
     }
 
-    private IEnumerator PowerUpRoutine()
+    public void StartPowerUp(float remainTime)
     {
-        yield return new WaitForSeconds(_duration);
+        StartCoroutine(PowerUpRoutine(remainTime));
+    }
 
+    private IEnumerator PowerUpRoutine(float duration)
+    {
+        PowerUpStarted?.Invoke(_gainType, duration, _gainIncreaseMultiplier);
+        _player.passivePowerUpRunning = true;
+        _powerUpRoutineRunning = true;
+        _remainPowerUpTime = _duration;
+        
+        yield return new WaitForSeconds(duration);
+
+        _player.passivePowerUpRunning = false;
+        _powerUpRoutineRunning = false;
         PowerUpEnded?.Invoke();
     }
 }

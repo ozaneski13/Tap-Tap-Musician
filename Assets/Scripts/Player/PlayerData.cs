@@ -9,6 +9,8 @@ public class PlayerData
 
     public float currentPassiveGainPerSecond;
     public float passiveGainPerSecond;
+    public bool passivePowerUpRunning;
+    public float passivePowerUpRoutineRemainTime;
 
     public EInstrument currentInstrument;
     public float instrumentExp;
@@ -22,6 +24,8 @@ public class PlayerData
         activeGainPerTap = player.activeGainPerTap;
         currentPassiveGainPerSecond = player.currentPassiveGainPerSecond;
         passiveGainPerSecond = player.passiveGainPerSecond;
+        passivePowerUpRunning = player.passivePowerUpRunning;
+        passivePowerUpRoutineRemainTime = player.passivePowerUpRoutineRemainTime;
         currentInstrument = player.currentInstrument;
         instrumentExp = player.instrumentExp;
         currentExpGain = player.currentExpGain;

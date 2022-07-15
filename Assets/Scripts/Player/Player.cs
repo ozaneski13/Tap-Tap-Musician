@@ -20,10 +20,15 @@ public class Player : MonoBehaviour
     public double musicalPoint;
 
     [HideInInspector]
-    public float afkGainPerSecond, activeGainPerTap, passiveGainPerSecond, currentPassiveGainPerSecond,instrumentExp, currentExpGain;
+    public float afkGainPerSecond, activeGainPerTap, passiveGainPerSecond, 
+        currentPassiveGainPerSecond,instrumentExp, currentExpGain,
+        passivePowerUpRoutineRemainTime;
 
     [HideInInspector]
     public EInstrument currentInstrument;
+
+    [HideInInspector]
+    public bool passivePowerUpRunning;
 
     public void SavePlayer()
     {
@@ -43,6 +48,7 @@ public class Player : MonoBehaviour
             activeGainPerTap = 5;
             currentPassiveGainPerSecond = 0;
             passiveGainPerSecond = 0;
+            passivePowerUpRunning = false;
             currentInstrument = EInstrument.None;
             instrumentExp = 0;
 
@@ -55,6 +61,8 @@ public class Player : MonoBehaviour
         activeGainPerTap = data.activeGainPerTap;
         currentPassiveGainPerSecond = data.currentPassiveGainPerSecond;
         passiveGainPerSecond = data.passiveGainPerSecond;
+        passivePowerUpRunning = data.passivePowerUpRunning;
+        passivePowerUpRoutineRemainTime = data.passivePowerUpRoutineRemainTime;
         currentInstrument = data.currentInstrument;
         instrumentExp = data.instrumentExp;
         currentExpGain = data.currentExpGain;

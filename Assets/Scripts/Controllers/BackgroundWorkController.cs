@@ -8,9 +8,14 @@ public class BackgroundWorkController : MonoBehaviour
 
     [Header("Controllers")]
     [SerializeField] private MusicalPointController _musicPointController = null;
+    [SerializeField] private PowerUpController _powerUpController = null;
+
+    private Player _player = null;
 
     private void Start()
     {
+        _player = Player.Instance;
+
         CheckDifference();
     }
 
@@ -23,6 +28,8 @@ public class BackgroundWorkController : MonoBehaviour
         DateTime oldDate = DateTime.FromBinary(tempDate);
 
         TimeSpan difference = currentDate.Subtract(oldDate);
+
+        _powerUpController.NotifyPassivePowerUp();
 
         _musicPointController.BackgroundGains(difference.TotalSeconds);
     }
@@ -38,7 +45,7 @@ public class BackgroundWorkController : MonoBehaviour
         {
             _notificationManager.CancelNotifications();
 
-            Player.Instance.LoadPlayer();
+            _player.LoadPlayer();
 
             CheckDifference();
         }
@@ -53,9 +60,9 @@ public class BackgroundWorkController : MonoBehaviour
 
     private void Save()
     {
-        Player.Instance.musicalPoint = _musicPointController.CurrentMusicalPointCount;
-        Player.Instance.lastSavedTime = DateTime.Now.ToBinary();
-        Player.Instance.SavePlayer();
+        _player.musicalPoint = _musicPointController.CurrentMusicalPointCount;
+        _player.lastSavedTime = DateTime.Now.ToBinary();
+        _player.SavePlayer();
 
         _notificationManager.ScheduleNotificationBeforeExit();
     }

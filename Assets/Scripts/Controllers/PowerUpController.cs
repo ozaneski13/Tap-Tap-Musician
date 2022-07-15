@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUpController : MonoBehaviour
@@ -7,15 +6,17 @@ public class PowerUpController : MonoBehaviour
     [SerializeField] private MusicalPointController _musicalPointController = null;
 
     [Header("Power Up Settings")]
-    [SerializeField] private List<PowerUp> _powerUps = null;
-
-    private List<PowerUp> _currentPowerUpList = null;
-
-    private bool _activePowerUpRunning = false;
-    private bool _passivePowerUpRunning = false;
+    [SerializeField] private ActiveGainPowerUp _activeGainPowerUp = null;
+    [SerializeField] private PassiveGainPowerUp _passiveGainPowerUp = null;
 
     private void CreatePowerUpList()
     {
 
+    }
+
+    public void NotifyPassivePowerUp()
+    {
+        if (Player.Instance.passivePowerUpRunning)
+            _passiveGainPowerUp.StartPowerUp(Player.Instance.passivePowerUpRoutineRemainTime);
     }
 }

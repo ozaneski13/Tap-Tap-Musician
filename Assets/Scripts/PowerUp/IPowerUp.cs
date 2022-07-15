@@ -1,4 +1,4 @@
 public interface IPowerUp
 {
-    void StartPowerUp();
+    void StartPowerUp(float duration);
 }
